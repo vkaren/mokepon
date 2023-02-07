@@ -1,7 +1,8 @@
 const sectionSeleccionJuego = document.getElementById("seleccion-juego");
 sectionSeleccionJuego.classList.add("visible");
 document.getElementById("offline").addEventListener("click", elegirTipoDeJuego);
-document.getElementById("online").addEventListener("click", elegirTipoDeJuego);
+document.getElementById("online").disabled = true;
+//document.getElementById("online").addEventListener("click", elegirTipoDeJuego);
 
 const sectionSeleccionMascota = document.getElementById("seleccion-mascota");
 const opcionesMascotas = document.getElementById("opciones-mascotas");
@@ -10,7 +11,6 @@ const sectionMapa = document.getElementById("mapa-jugadores");
 const canvas = document.getElementById("mapa");
 const mapa = canvas.getContext("2d");
 const cajaDeMensajes = document.getElementById("caja-de-mensajes");
-cajaDeMensajes.style.display = "none";
 
 const sectionCombate = document.getElementById("combate");
 const barraVidaJugador = document.getElementById("barra-vida-jugador");
@@ -20,7 +20,6 @@ const spanVictoriasEnemigo = document.getElementById("victorias-enemigo");
 const botonesAtaques = document.getElementById("botones-ataques");
 const mensajeText = document.getElementById("mensajes");
 const botonReiniciar = document.getElementById("boton-reiniciar");
-botonReiniciar.addEventListener("click", reiniciar);
 
 let opcionDeJuego = "";
 let mascotaJugador;
@@ -66,7 +65,7 @@ class Mokepon {
       this.ataqueActual.img = this.ataques[ataque].img;
 
       let fnEjecutarLuego;
-  ///!!!!!!!!!!!!!!!
+
       if (opcionDeJuego === "offline") {
         fnEjecutarLuego = () => this.enemigo.ataqueAleatorio();
       } else {
@@ -363,6 +362,7 @@ function volverAlInicio() {
 }
 function sectionMapaLoad() {
   sectionMapa.classList.add("visible");
+  cajaDeMensajes.style.display = "none";
   document
     .getElementById("elegir-mascota")
     .addEventListener("click", elegirOtraMascota);
@@ -501,7 +501,7 @@ function seleccionarMascota(mascotaJugador) {
   mascotaJugador.id = jugadorId;
   mascotaJugador.enMapa.posicion.x = posicionFija.x;
   mascotaJugador.enMapa.posicion.y = posicionFija.y;
-////!!!!!!!!!
+
   if (opcionDeJuego === "online") {
     seleccionarMokeponBackend();
   }
@@ -559,7 +559,7 @@ function pintarCanvas() {
     mascotaJugador.enMapa.posicion.x,
     mascotaJugador.enMapa.posicion.y
   );
-////!!!!!!!!
+
   if (opcionDeJuego === "offline") {
     pintarMascotasOffline();
     if (
@@ -641,12 +641,12 @@ function revisarColision(enemigo) {
     (izquierdaMascota !== posicionFija.x || arribaMascota !== posicionFija.y) &&
     (izquierdaMascota > posicionFija.x + enemigo.enMapa.size.ancho ||
       arribaMascota < posicionFija.y - enemigo.enMapa.size.alto ||
-      izquierdaMascota < posicionFija.x -  enemigo.enMapa.size.ancho ||
-      arribaMascota > posicionFija.y +  enemigo.enMapa.size.alto)
+      izquierdaMascota < posicionFija.x - enemigo.enMapa.size.ancho ||
+      arribaMascota > posicionFija.y + enemigo.enMapa.size.alto)
   ) {
     detenerMovimiento();
     clearInterval(interval); //intervalo de pintar canvas
-////!!!!!!!!
+
     if (opcionDeJuego === "offline") {
       seleccionarMascotaEnemigo(enemigo);
     } else {
@@ -697,7 +697,7 @@ function seleccionarMascotaEnemigo(enemigo) {
 
   mascotaJugador.enemigo = mascotaEnemiga;
   mascotaEnemiga.enemigo = mascotaJugador;
-//////!!!!!
+
   if (opcionDeJuego === "online") {
     enemigoId = mascotaEnemiga.id;
   }
@@ -759,6 +759,8 @@ function obtenerAtaqueEnemigo() {
 }
 
 function combate() {
+  botonReiniciar.addEventListener("click", reiniciar);
+
   let ataqueJugador = mascotaJugador.ataqueActual.nombre;
   let ataqueEnemigo = mascotaEnemiga.ataqueActual.nombre;
   let valorAtaqueJugador = mascotaJugador.ataqueActual.valor;
@@ -807,7 +809,7 @@ function revisarAtaquesDisponibles() {
   } else if (ataquesDisponiblesJugador === 0 && ataquesDisponiblesEnemigo > 0) {
     mascotaJugador.ataqueActual.nombre = "";
     mascotaJugador.ataqueActual.valor = 0;
-/////////!!!!!!!!!!!!!!
+
     if (opcionDeJuego === "offline") {
       mascotaEnemiga.ataqueAleatorio();
     } else {
@@ -831,7 +833,7 @@ function terminoElJuego() {
 
 function reiniciar() {
   mascotaJugador = copiaProfundaObjeto(mascotas[mascotaJugador.nombre]);
-////!!!!!!!!!!!!
+
   if (opcionDeJuego === "online") {
     terminoElJuego();
     mascotaJugador.id = jugadorId;
@@ -856,6 +858,7 @@ function reiniciar() {
   interval = setInterval(pintarCanvas, 50);
 }
 
+//(jugando online)
 function alCerrarORefrescarPagina() {
   window.addEventListener("beforeunload", () => cerrarSesion(jugadorId));
 
@@ -868,7 +871,7 @@ function alCerrarORefrescarPagina() {
     window.sessionStorage.setItem("jugadorId", jugadorId);
   }
 }
-
+//eliminar jugador al cerrar o refrescar pagina (cerrar sesion)
 function cerrarSesion(jugador) {
   clearInterval(interval);
   fetch(`http://localhost:8080/mokepon/${jugador}/cerrar-pagina`, {
@@ -877,6 +880,7 @@ function cerrarSesion(jugador) {
   });
 }
 
+//valor de una propiedad aleatoria de un objeto
 function aleatorio(datos) {
   let datosKeys = Object.keys(datos);
   let numeroAleatorio = Math.floor(
