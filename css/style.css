@@ -1,0 +1,435 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+html,
+body,
+section.visible {
+  min-height: 100vh;
+}
+body {
+  margin: 0;
+  font-family: "Press Start 2P", cursive;
+  box-sizing: border-box;
+}
+h2 {
+  margin: 0;
+  font-size: 1em;
+}
+img {
+  width: 100%;
+}
+section {
+  display: none;
+}
+section.visible {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+}
+section#seleccion-juego,
+section#seleccion-mascota {
+  background: url("./img/background.png");
+  background-size: cover;
+}
+.botones-opciones {
+  display: flex;
+  flex-direction: column;
+}
+button#offline,
+button#online {
+  margin: 2em;
+}
+button#offline,
+button#online,
+button#volver-al-inicio,
+button#elegir-mascota,
+#boton-seleccionar,
+#boton-reiniciar,
+#botones-movimientos button {
+  font-family: "Press Start 2P", cursive;
+  cursor: pointer;
+  background: #356abc;
+  color: #ffcd00;
+  border: 3px solid #d8ad00;
+  border-radius: 20px;
+}
+button#offline,
+button#online,
+#boton-seleccionar,
+#boton-reiniciar,
+#botones-movimientos button {
+  padding: 1em 3em;
+  margin: 1em;
+}
+button#volver-al-inicio,
+button#elegir-mascota {
+  padding: 1em;
+  margin: 0 2em;
+  background: #e5ff00;
+  color: #356abc;
+  border: 3px solid #356abc;
+}
+button#offline:hover,
+button#online:hover,
+#boton-seleccionar:hover,
+#boton-reiniciar:hover,
+button#elegir-mascota:hover {
+  transform: scale(1.1);
+}
+
+section#seleccion-mascota .title {
+  width: 20em;
+  margin-top: 2em;
+}
+section#seleccion-mascota .header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 65%;
+  margin: 2em 0;
+}
+#boton-seleccionar {
+  width: 36%;
+  text-align: center;
+  padding: 1em;
+}
+#opciones-mascotas {
+  display: grid;
+  grid-template-columns: repeat(3, 17%);
+  align-items: center;
+  justify-content: space-evenly;
+  width: 90%;
+  grid-gap: 1em 0;
+}
+input[type="radio"] {
+  display: none;
+}
+input[type="radio"]:checked + label {
+  border-top: 4px solid #363636;
+  border-left: 4px solid #363636;
+  border-bottom: 3px solid #6d6565;
+  border-right: 3px solid #6d6565;
+}
+label {
+  width: 100%;
+  padding: 1em;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: white;
+}
+label p {
+  font-size: 0.8em;
+}
+label:hover,
+#botones-ataques button:hover {
+  transform: scale(1.05);
+}
+.agua,
+.boton-agua {
+  background: #356abc;
+  border-top: 3px solid #235fb9;
+  border-left: 3px solid #235fb9;
+  border-bottom: 3px solid #85b1f3;
+  border-right: 3px solid #85b1f3;
+}
+.tierra,
+.boton-tierra {
+  background: #39c926;
+  border-top: 3px solid #25bb11;
+  border-left: 3px solid #25bb11;
+  border-bottom: 3px solid #67d359;
+  border-right: 3px solid #67d359;
+}
+.fuego,
+.boton-fuego {
+  background: #ff8c08;
+  border-top: 3px solid #d8780a;
+  border-left: 3px solid #d8780a;
+  border-bottom: 3px solid #ffb056;
+  border-right: 3px solid #ffb056;
+}
+
+section#mapa-jugadores {
+  background: #ffcd00;
+}
+.mapa-canvas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  height: 50vh;
+  border: 5px solid #356abc;
+  padding: 1em;
+  border-radius: 10px;
+}
+#mapa {
+  width: 100%;
+  height: 100%;
+  background: url("./img/mokemap.png");
+  background-size: 100% 100%;
+  border-radius: 10px;
+}
+#botones-movimientos {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#botones-movimientos button:hover {
+  background: #3d7bd8;
+}
+#botones-movimientos button:active {
+  background: #356abc;
+}
+
+section#combate {
+  background: url("./img/background-fight.png");
+  background-size: cover;
+}
+section#combate .title {
+  width: 15em;
+}
+.vidas,
+.victorias,
+.combate-mascotas {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+}
+.combate-mascotas div {
+  width: 30%;
+}
+.vidas > div{
+  display: grid;
+  justify-content: space-between;
+  align-items: center;
+  width: 30%;
+}
+.vidas-jugador {
+  grid-template-columns: 20% 80%;
+}
+.vidas-enemigo {
+  grid-template-columns: 80% 20%;
+}
+.vidas span {
+  font-size: 0.76em;
+  text-align: center;
+  grid-column: 1/3;
+}
+.vidas-jugador span {
+  justify-self: left;
+}
+.vidas-enemigo span {
+  justify-self: right;
+}
+.vidas img {
+  width: 2em;
+  grid-row: 2/3;
+}
+.vidas-jugador img {
+  justify-self: start;
+}
+.vidas-enemigo img {
+  justify-self: end;
+}
+.barras-vidas {
+  height: 1em;
+  border: 2px solid black;
+  background-color: red;
+  grid-row: 2/3;
+}
+.barras-vidas[style*="--bg-length"] {
+  background: linear-gradient(
+    to right,
+    rgb(255, 0, 0) var(--bg-length),
+    /* the end of the colored segment */ transparent var(--bg-length)
+      /* the start of the transparent segment */
+  );
+}
+.victorias div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 6%;
+}
+.victorias img {
+  width: 2.5em;
+}
+#botones-ataques {
+  display: flex;
+  gap: 1em;
+  flex-wrap: wrap;
+  margin: 0 2em;
+  justify-content: center;
+  align-items: center;
+}
+#botones-ataques button {
+  width: 12%;
+  border-radius: 10px;
+  padding: 0.5em;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+#botones-ataques .ataque-usado:disabled {
+  background-color: #616161;
+  border-top: 3px solid #383838;
+  border-left: 3px solid #383838;
+  border-bottom: 3px solid #a3a3a3;
+  border-right: 3px solid #a3a3a3;
+}
+#botones-ataques .esperando-ataque-enemigo:disabled {
+  opacity: 0.5;
+}
+#boton-reiniciar,
+#ataque-jugador-animacion,
+#ataque-enemigo-animacion {
+  display: none;
+}
+
+#mensajes {
+  position: relative;
+  top: -250px;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 1s ease-in;
+}
+#mensajes.visible {
+  opacity: 1;
+  transform: scale(1.5);
+}
+
+#ataque-jugador-animacion.visible {
+  display: block;
+  position: relative;
+  width: 5em;
+  top: -35vh;
+  left: 10vw;
+  transform: rotate(-35deg);
+  animation: ataqueJugador 1s linear;
+}
+#ataque-enemigo-animacion.visible {
+  display: block;
+  position: relative;
+  width: 5em;
+  top: -35vh;
+  left: 10vw;
+  transform: rotate(32deg);
+  animation: ataqueEnemigo 1s linear;
+}
+
+@keyframes ataqueJugador {
+  0% {
+    transform: rotate(-35deg);
+  }
+  50% {
+    transform: rotate(-8deg) translate(24vw, -12vh);
+  }
+  100% {
+    transform: rotate(13deg) translate(43vw, -13vh);
+  }
+}
+
+@keyframes ataqueEnemigo {
+  0% {
+    transform: rotate(32deg);
+  }
+  50% {
+    transform:rotate(-8deg) translate(-28vw, -17vh);
+  }
+  100% {
+    transform: rotate(-35deg) translate(-43vw, -35vh);
+  }
+}
+
+@media  (max-device-width: 700px){
+  #ataque-jugador-animacion.visible {
+    top: -15vh;
+    left: 10vw;
+  }
+  #ataque-enemigo-animacion.visible {
+    top: -15vh;
+    left: 10vw;
+  }
+  @keyframes ataqueJugador {
+    0% {
+      transform: rotate(-35deg);
+    }
+    50% {
+      transform: rotate(-8deg) translate(24vw, -12vh);
+    }
+    100% {
+      transform: rotate(13deg) translate(43vw, -13vh);
+    }
+  }
+  
+  @keyframes ataqueEnemigo {
+    0% {
+      transform: rotate(32deg);
+    }
+    50% {
+      transform:rotate(-8deg) translate(-28vw, -17vh);
+    }
+    100% {
+      transform: rotate(-35deg) translate(-43vw, -15vh);
+    }
+  }
+}
+
+@media (max-device-width: 600px) {
+  section#seleccion-mascota .header,
+  #opciones-mascotas {
+    width: 100%;
+  }
+  #opciones-mascotas {
+    grid-template-columns: repeat(2, 30%);
+  }
+  #boton-seleccionar {
+    width: 50%;
+  }
+  .mapa-canvas {
+    width: 84%;
+  }
+  #botones-movimientos button {
+    padding: 1em 2em;
+  }
+  #botones-movimientos div {
+    display: flex;
+  }
+  .combate-mascotas div {
+    width: 40%;
+  }
+  .vidas span {
+    grid-row: 1/2;
+  }
+  .vidas-jugador span {
+    justify-self: right;
+  }
+  .vidas-enemigo span {
+    justify-self: left;
+  }
+  .vidas img {
+    width: 2em;
+    grid-row: 1/2;
+  }
+  .vidas-jugador img {
+    grid-column: 1/2;
+  }
+  .vidas-enemigo img {
+    grid-column: 2/3;
+  }
+  .barras-vidas {
+    grid-column: 1/3;
+  }
+  .victorias div {
+    width: 15%;
+  }
+  #botones-ataques button {
+    width: 20%;
+  }
+ 
+}

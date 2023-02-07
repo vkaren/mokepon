@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>MOKEPON!!</title>
+  </head>
+  <body>
+    <section id="seleccion-juego">
+      <div class="title"><img src="./img/title.png" alt="mokepon" /></div>
+      <div class="botones-opciones">
+      <button id="offline">Jugar sin conexión</button>
+      <button id="online">Jugar online</button>
+    </div>
+    </section>
+
+    <section id="seleccion-mascota">
+      <div class="title"><img src="./img/title.png" alt="mokepon" /></div>
+      <div class="header">
+      <button id="volver-al-inicio">Volver</button>
+      <h2>Elige a tu mascota</h2>
+      </div>
+      <div id="opciones-mascotas"></div>
+
+      <button id="boton-seleccionar">Seleccionar</button>
+    </section>
+
+    <section id="mapa-jugadores">
+      <div class="mapa-canvas">
+        <canvas id="mapa"></canvas>
+      </div>
+     
+
+      <div id="caja-de-mensajes">
+        <button id="quitar-mensaje">x</button>
+        <p id="mensaje"></p>
+      </div>
+      
+      <div id="botones-movimientos">
+        <button class="boton-movimiento" id="arriba">↑</button>
+        <div>
+        <button class="boton-movimiento" id="izquierda">←</button>
+        <button class="boton-movimiento" id="abajo">↓</button>
+        <button class="boton-movimiento" id="derecha">→</button></div>
+      </div>
+      <button id="elegir-mascota">Elegir otra mascota</button>
+    </section>
+
+    <section id="combate">
+      <div class="title"><img src="./img/title.png" alt="mokepon" /></div>
+
+      <div class="vidas">
+        <div class="vidas-jugador">
+          <span>YOU</span>
+          <img
+            src="https://img.icons8.com/arcade/64/null/diamond-heart.png"
+            alt="vida-jugador" />
+          <div id="barra-vida-jugador" class="barras-vidas"></div>
+        </div>
+        <div class="vidas-enemigo">
+          <div id="barra-vida-enemigo" class="barras-vidas"></div>
+          <span>PC</span>
+          <img
+            src="https://img.icons8.com/arcade/64/null/diamond-heart.png"
+            alt="vida-enemigo" />
+        </div>
+      </div>
+
+      <div class="victorias">
+        <div class="cont-victorias-jug">
+          <img src="https://img.icons8.com/arcade/64/null/trophy.png" />
+          <span id="victorias-jugador">0</span>
+        </div>
+        <div class="cont-victorias-ene">
+          <span id="victorias-enemigo">0</span>
+          <img src="https://img.icons8.com/arcade/64/null/trophy.png" />
+        </div>
+      </div>
+
+      <div class="combate-mascotas">
+        <div id="mascota-jugador">
+          <img src="" alt="" id="mascota-jugador-img" />
+          <div id="ataque-jugador-animacion">
+            <img src="" alt="" id="ataque-jugador">
+          </div>
+        </div>
+        <div id="mascota-enemigo">
+          <img src="" alt="" id="mascota-enemigo-img" />
+          <div id="ataque-enemigo-animacion">
+            <img src="" alt="" id="ataque-enemigo">
+          </div>
+        </div>
+      </div>
+
+      <div id="botones-ataques"></div>
+
+      <p id="mensajes"></p>
+
+      <button id="boton-reiniciar">Volver a jugar</button>
+    </section>
+
+    <script src="./js/script.js"></script>
+  </body>
+</html>
