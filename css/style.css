@@ -94,12 +94,12 @@ section#seleccion-mascota .header {
   padding: 1em;
 }
 #opciones-mascotas {
+   width: 90%;
   display: grid;
   grid-template-columns: repeat(3, 17%);
   align-items: center;
-  justify-content: space-evenly;
-  width: 90%;
-  grid-gap: 1em 0;
+  justify-content: center;
+grid-gap: 1em 4em;
 }
 input[type="radio"] {
   display: none;
@@ -111,7 +111,8 @@ input[type="radio"]:checked + label {
   border-right: 3px solid #6d6565;
 }
 label {
-  width: 100%;
+  width: 85%;
+  word-wrap: anywhere;
   padding: 1em;
   border-radius: 12px;
   display: flex;
@@ -382,12 +383,26 @@ section#combate .title {
 }
 
 @media (max-device-width: 600px) {
+  section#seleccion-juego .title {
+    width: 75%;
+  }
+  .botones-opciones {
+    width: 85%;
+  }
+  section#seleccion-mascota .title {
+    width: 16em;
+  }
   section#seleccion-mascota .header,
   #opciones-mascotas {
-    width: 100%;
+    width: 80%;
+    justify-content: space-between;
+  grid-gap: 1em 0;
+  }
+  label {
+    width: 58%;
   }
   #opciones-mascotas {
-    grid-template-columns: repeat(2, 30%);
+    grid-template-columns: repeat(2, 55%);
   }
   #boton-seleccionar {
     width: 50%;
